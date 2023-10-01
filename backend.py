@@ -4,13 +4,12 @@ import os
 
 app=""
 # Generate a random 32-character hexadecimal string
-def create_app():
-    app = Flask(__name__, template_folder="templates")
-    app.secret_key = "4c15ecd572abf8862666257ae104126084a1202187b925bd4dd99e1990ec6254"
 
-    print(app.secret_key)
-    app.config['MONGO_URI'] = 'mongodb+srv://maheshduggi456:Mahesh123@murali.ztmq9oy.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
-    return app
+app = Flask(__name__, template_folder="templates")
+app.secret_key = "4c15ecd572abf8862666257ae104126084a1202187b925bd4dd99e1990ec6254"
+
+app.config['MONGO_URI'] = 'mongodb+srv://maheshduggi456:Mahesh123@murali.ztmq9oy.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
+    
 mongo_uri = os.environ.get('MONGO_URI')
 mongo = MongoClient(mongo_uri)
 db = mongo.get_database('Murali')
