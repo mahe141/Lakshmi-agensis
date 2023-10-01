@@ -103,7 +103,7 @@ def book():
         data = data_collection.find()
         return render_template('index.html',msg="Booking confirmed",Jobs=data)
     else:
-        return render_template('Booking.html')
+        return render_template('booking.html')
 @app.route('/login',methods=['POST','GET'])
 def login():
     if request.method == 'POST':
