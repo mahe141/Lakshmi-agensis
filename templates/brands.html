@@ -1,0 +1,42 @@
+<style>
+    .my-button {
+    padding: 10px 20px; /* Default padding and size */
+    font-size: 16px;
+
+}
+
+/* Adjust button size for smaller screens */
+@media screen and (max-width: 768px) {
+    .my-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+</style>
+<div class="row">
+    <div class="col-4 mt-2">
+        <center style="margin-top: 5%;">
+            <h5>{{job['brand']}}</h5>
+            <div>
+                Cost : {{job['cost']}}
+            </div>
+        </center>
+        
+    </div>
+    {% if job['image']%}
+    <div class="col-5" >
+        <img src="{{ job['image'] }}" alt="Brand-image" height="100px" width="100px">
+    </div>
+    {% endif %}
+    <div class="col-3">
+       <center style="margin-top: 10%;">
+        <form class="form-horizontal" action="{{ url_for('book') }}" style="max-width: 70%;margin: auto;min-width: 70%;" method="get">
+            <button class="btn btn-primary btn-lg my-button" > Order</button>
+        </form>
+        
+        </center> 
+    </div>
+    
+   
+</div>
+<hr>
