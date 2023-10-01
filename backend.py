@@ -89,7 +89,6 @@ def display_data():
 @app.route('/book',methods=["POST","GET"])
 def book():
     if request.method=="POST":
-        print(request.form)
         u_name = request.form['Name']
         t_data ={
             "user_name" : u_name,
