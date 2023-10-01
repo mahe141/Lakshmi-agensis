@@ -1,6 +1,7 @@
 from flask import Flask,render_template,url_for,redirect,request,session
 from pymongo import MongoClient
-import secrets
+import os
+
 app=""
 # Generate a random 32-character hexadecimal string
 def create_app():
@@ -10,7 +11,8 @@ def create_app():
     print(app.secret_key)
     app.config['MONGO_URI'] = 'mongodb+srv://maheshduggi456:Mahesh123@murali.ztmq9oy.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
     return app
-mongo = MongoClient(app.config['MONGO_URI'])
+mongo_uri = os.environ.get('MONGO_URI')
+mongo = MongoClient(mongo_uri)
 db = mongo.get_database('Murali')
 users_collection = db['Users']
 admin_collection = db['admin']
@@ -138,4 +140,5 @@ def home():
     data = data_collection.find()
     
     return render_template('index.html',Jobs=data)
-
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
